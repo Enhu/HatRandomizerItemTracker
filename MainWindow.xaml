@@ -6,8 +6,71 @@
         xmlns:local="clr-namespace:HatRandomizerChecklist"
         mc:Ignorable="d"
         Title="AHiT Randomizer Checklist" Height="800" Width="800">
-    <Grid Background="Black">
-        <Label x:Name="Test" Style="{StaticResource HatInTimeFont}" FontSize="50" Foreground="White" Content="Label" HorizontalAlignment="Left" Margin="24,23,0,0" VerticalAlignment="Top"/>
-
+    <Grid Background="DimGray">
+        <!-- Timepiece -->
+        <Image x:Name="TimePieceImage" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Source="/Images/TimePiece/timepiece.png"/>
+        <Label x:Name="TimePieceCounter" FontSize="18" Foreground="White" Content="x0" Style="{StaticResource HatInTimeFont}" HorizontalAlignment="Left" Margin="49,38,0,0" VerticalAlignment="Top"/>
+        <!-- Yarn -->
+        <Image x:Name="YarnImage" HorizontalAlignment="Left" Height="50" Margin="101,16,0,0" VerticalAlignment="Top" Width="50" Source="/Images/Yarn/DefaultYarn.png"/>
+        <Label x:Name="YarnCounter" FontSize="18" Foreground="White" Content="x0" Style="{StaticResource HatInTimeFont}" HorizontalAlignment="Left" Margin="150,38,0,0" VerticalAlignment="Top"/>
+        <!-- Umbrella -->
+        <Image x:Name="UmbrellaImage" HorizontalAlignment="Left" Height="75" Margin="197,8,0,0" VerticalAlignment="Top" Width="75" Source="/Images/Umbrella/Umbrella.png"/>
+        <!-- Hats -->
+        <Image x:Name="SprintHatImage" HorizontalAlignment="Left" Height="55" Margin="10,101,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Hats/SprintHat.png"/>
+        <Image x:Name="BrewerHatImage" HorizontalAlignment="Left" Height="55" Margin="80,101,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Hats/BrewerHat.png"/>
+        <Image x:Name="IceHatImage" HorizontalAlignment="Left" Height="55" Margin="163,101,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Hats/IceHat.png"/>
+        <Image x:Name="DwellerMaskImage" HorizontalAlignment="Left" Height="55" Margin="235,101,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Hats/DwellerMask.png"/>
+        <Image x:Name="TimeStopHatImage"  HorizontalAlignment="Left" Height="55" Margin="303,101,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Hats/TimeStopHat.png"/>
+        <!-- Badges -->
+        <Image x:Name="BadgePinImage" HorizontalAlignment="Left" Height="55" Margin="7,182,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/BadgePin.png"/>
+        <Image x:Name="HookshotBadgeImage" HorizontalAlignment="Left" Height="55" Margin="70,183,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/HookshotBadge.png"/>
+        <Image x:Name="MagnetBadgeImage" HorizontalAlignment="Left" Height="55" Margin="142,184,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/MagnetBadge.png"/>
+        <Image x:Name="NoBonkBadgeImage" HorizontalAlignment="Left" Height="55" Margin="202,183,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/NoBonkBadge.png"/>
+        <Image x:Name="HoverBadgeImage" HorizontalAlignment="Left" Height="56" Margin="11,276,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Badges/HoverBadge.png"/>
+        <Image x:Name="ScooterBadgeImage" HorizontalAlignment="Left" Height="55" Margin="276,184,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Badges/ScooterBadge.png"/>
+        <Image x:Name="FastHatterBadgeImage" HorizontalAlignment="Left" Height="55" Margin="339,183,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/FastHatterBadge.png"/>
+        <Image x:Name="CameraBadgeImage" HorizontalAlignment="Left" Height="54" Margin="475,183,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/CameraBadge.png"/>
+        <Image x:Name="OneHHBadgeImage" HorizontalAlignment="Left" Height="55" Margin="542,182,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Badges/1HHBadge.png"/>
+        <Image x:Name="CompassBadgeImage" HorizontalAlignment="Left" Height="55" Margin="76,276,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/CompassBadge.png"/>
+        <Image x:Name="MirrorBadgeImage" HorizontalAlignment="Left" Height="55" Margin="445,271,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/MirrorBadge.png"/>
+        <Image x:Name="MumbleBadgeImage" HorizontalAlignment="Left" Height="55" Margin="511,271,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/MumbleBadge.png"/>
+        <Image x:Name="ProjectileBadgeImage" HorizontalAlignment="Left" Height="55" Margin="406,183,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/ProjectileBadge.png"/>
+        <Image x:Name="NostalgiaBadgeImage" HorizontalAlignment="Left" Height="55" Margin="155,276,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Badges/NostalgiaBadge.png"/>
+        <Image x:Name="PeacefulBadgeImage" HorizontalAlignment="Left" Height="55" Margin="243,276,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Badges/PeacefulBadge.png"/>
+        <Image x:Name="RetroBagdeImage" HorizontalAlignment="Left" Height="55" Margin="315,271,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/RetroBadge.png"/>
+        <Image x:Name="REDtroVRImage" HorizontalAlignment="Left" Height="55" Margin="385,276,0,0" VerticalAlignment="Top" Width="56" Source="/Images/Badges/REDtroVRBadge.png"/>
+        <!-- Relics -->
+        <Image x:Name="BurgerPattyImage" HorizontalAlignment="Left" Height="56" Margin="11,346,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/BurgerPatty.png"/>
+        <Image x:Name="BurgerCushionImage" HorizontalAlignment="Left" Height="56" Margin="80,351,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/BurgerCushion.png"/>
+        <Image x:Name="MountainSetImage" HorizontalAlignment="Left" Height="56" Margin="147,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/MountainSet.png"/>
+        <Image x:Name="TrainImage" HorizontalAlignment="Left" Height="56" Margin="222,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/Train.png"/>
+        <Image x:Name="UfoImage" HorizontalAlignment="Left" Height="56" Margin="500,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/UFO.png"/>
+        <Image x:Name="CowImage" HorizontalAlignment="Left" Height="56" Margin="572,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/Cow.png"/>
+        <Image x:Name="CowSunglassesImage" HorizontalAlignment="Left" Height="56" Margin="640,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/SunglassesCow.png"/>
+        <Image x:Name="TinfoilCowImage" HorizontalAlignment="Left" Height="56" Margin="709,339,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/TinfoilHatCow.png"/>
+        <Image x:Name="CrayonBoxImage" HorizontalAlignment="Left" Height="56" Margin="280,338,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/CrayonBox.png"/>
+        <Image x:Name="RedCrayonImage" HorizontalAlignment="Left" Height="56" Margin="334,337,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/RedCrayon.png"/>
+        <Image x:Name="BlueCrayonImage" HorizontalAlignment="Left" Height="56" Margin="376,337,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/BlueCrayon.png"/>
+        <Image x:Name="GreenCrayonImage" HorizontalAlignment="Left" Height="56" Margin="430,337,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/GreenCrayon.png"/>
+        <Image x:Name="NecklaceBustImage" HorizontalAlignment="Left" Height="56" Margin="21,424,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/NecklaceBust.png"/>
+        <Image x:Name="NecklageImage" HorizontalAlignment="Left" Height="56" Margin="97,424,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/Necklace.png"/>
+        <Image x:Name="CakeStandImage" HorizontalAlignment="Left" Height="56" Margin="184,427,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/CakeStand.png"/>
+        <Image x:Name="CakeImage" HorizontalAlignment="Left" Height="56" Margin="260,432,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/Cake.png"/>
+        <Image x:Name="CakeSliceImage" HorizontalAlignment="Left" Height="56" Margin="319,433,0,0" VerticalAlignment="Top" Width="54" Source="/Images/Relics/CakeSlice.png"/>
+        <Image x:Name="ShortcakeImage" HorizontalAlignment="Left" Height="56" Margin="400,433,0,0" VerticalAlignment="Top" Width="55" Source="/Images/Relics/Shortcake.png"/>
+        <!-- Paintings -->
+        <Image x:Name="PaintingYellow" HorizontalAlignment="Left" Height="56" Margin="292,12,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SubconPaintings/PaintingYellow.png"/>
+        <Image x:Name="PaintingBlue" HorizontalAlignment="Left" Height="56" Margin="361,12,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SubconPaintings/PaintingPurple.png"/>
+        <Image x:Name="PaintingGreen" HorizontalAlignment="Left" Height="56" Margin="428,18,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SubconPaintings/PaintingGreen.png"/>
+        <!-- Alpine Ziplines -->
+        <Image x:Name="BirdhouseZipline" HorizontalAlignment="Left" Height="56" Margin="500,27,0,0" VerticalAlignment="Top" Width="54" Source="/Images/AlpineZiplines/Horn.png"/>
+        <Image x:Name="LavaCakeZipline" HorizontalAlignment="Left" Height="56" Margin="581,19,0,0" VerticalAlignment="Top" Width="54" Source="/Images/AlpineZiplines/Horn.png"/>
+        <Image x:Name="TwilightBellZipline" HorizontalAlignment="Left" Height="56" Margin="640,19,0,0" VerticalAlignment="Top" Width="54" Source="/Images/AlpineZiplines/Horn.png"/>
+        <Image x:Name="WindmillZipline" HorizontalAlignment="Left" Height="56" Margin="715,19,0,0" VerticalAlignment="Top" Width="54" Source="/Images/AlpineZiplines/Horn.png"/>
+        <!-- Snatcher Contracts -->
+        <Image x:Name="ToiletContract" HorizontalAlignment="Left" Height="56" Margin="667,80,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SnatcherContracts/Contract.png"/>
+        <Image x:Name="MDSContract" HorizontalAlignment="Left" Height="56" Margin="599,80,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SnatcherContracts/Contract.png"/>
+        <Image x:Name="WellContract" HorizontalAlignment="Left" Height="56" Margin="502,80,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SnatcherContracts/Contract.png"/>
+        <Image x:Name="ManorContract" HorizontalAlignment="Left" Height="56" Margin="418,77,0,0" VerticalAlignment="Top" Width="54" Source="/Images/SnatcherContracts/Contract.png"/>
     </Grid>
 </Window>
