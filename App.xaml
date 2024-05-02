@@ -1,0 +1,14 @@
+﻿<Application x:Class="HatRandomizerChecklist.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HatRandomizerChecklist"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="HatInTimeFont">
+            <Setter Property="TextElement.FontFamily" Value="/Utils/Font/#Curse Casual"></Setter>
+        </Style>
+        <Style TargetType="Control">
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+    </Application.Resources>
+</Application>
