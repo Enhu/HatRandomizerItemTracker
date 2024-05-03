@@ -45,6 +45,12 @@ function createWindow() {
     }
 
     win.loadFile('index.html');
+
+    win.webContents.once('did-finish-load', () => {
+        const bgColor = isFrameless ? 'rgba(0, 0, 0, 0)' : 'gray';
+        win.webContents.send('set-background-color', bgColor);
+    });
+
 }
 
 app.whenReady().then(() => {

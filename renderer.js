@@ -1,8 +1,13 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-frameless');
 
     toggleButton.addEventListener('click', () => {
         window.electronAPI.toggleFrameless();
+    });
+
+    window.electronAPI.on('set-background-color', (event, bgColor) => {
+        document.body.style.backgroundColor = bgColor;
     });
 });
 
