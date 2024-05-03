@@ -1,9 +1,11 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 const createWindow = () => {
+    Menu.setApplicationMenu(null);
+
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 340,
+        height: 740,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true

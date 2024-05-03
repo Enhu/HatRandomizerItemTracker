@@ -6,17 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-packager ."
+    "dist": "electron-builder"
   },
   "keywords": [
-    "electron",
-    "reactjs",
-    "typescript"
+    "electron"
   ],
-  "author": "enhu and Ellie",
+  "author": "enhu",
   "license": "MIT",
   "devDependencies": {
-    "@electron/packager": "^18.3.2",
-    "electron": "^30.0.2"
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.enhu.hatrandomizerchecklist",
+    "win": {
+      "target": "portable"
+    },
+    "portable": {
+      "artifactName": "HatRandoTracker.exe"
+    }
   }
 }
