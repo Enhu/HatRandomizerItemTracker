@@ -1,3 +1,9 @@
+// renderer.js
+window.electronAPI.on('change-background-color', (event, color) => {
+    document.body.style.backgroundColor = color;
+});
+
+
 const rowContainers = [
     document.getElementById('row-one'),
     document.getElementById('row-two'),
