@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.electronAPI.toggleFrameless();
     });
 
-    window.electronAPI.on('set-background-color', (event, bgColor) => {
+    window.electronAPI.on('set-background-color', (event, bgColor, textColor) => {
         document.body.style.backgroundColor = bgColor;
+        document.body.style.color = textColor;
     });
 });
 

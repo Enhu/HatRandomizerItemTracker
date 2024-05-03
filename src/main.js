@@ -48,7 +48,8 @@ function createWindow() {
 
     win.webContents.once('did-finish-load', () => {
         const bgColor = isFrameless ? 'rgba(0, 0, 0, 0)' : 'gray';
-        win.webContents.send('set-background-color', bgColor);
+        const textColor = isFrameless ? 'white' : 'black';
+        win.webContents.send('set-background-color', bgColor, textColor);
     });
 
 }
