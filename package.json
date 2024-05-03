@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
+    "start": "set NODE_ENV=development && electron .",
     "dist": "electron-builder"
   },
   "keywords": [
@@ -20,10 +20,8 @@
   "build": {
     "appId": "com.enhu.hatrandomizerchecklist",
     "win": {
-      "target": "portable"
-    },
-    "portable": {
-      "artifactName": "HatRandoTracker.exe"
+      "target": "portable",
+      "icon": "./build/icon.png"
     }
   }
 }

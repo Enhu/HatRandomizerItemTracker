@@ -1,7 +1,11 @@
 const { app, BrowserWindow, Menu } = require('electron')
 
 const createWindow = () => {
-    Menu.setApplicationMenu(null);
+    var environment = process.env.NODE_ENV
+    var isDevelopment = environment === 'development'
+
+    if (isDevelopment)
+        Menu.setApplicationMenu(null);
 
     const win = new BrowserWindow({
         width: 340,
