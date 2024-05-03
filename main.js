@@ -1,55 +1,62 @@
-const { app, BrowserWindow, Menu, MenuItem } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 const path = require('path');
 
-const createWindow = () => {
+let win;
+let isFrameless = false;
+
+function createWindow() {
+    if (win) {
+        const { width, height, x, y } = win.getBounds();
+        win.close();
+
+        win = new BrowserWindow({
+            width,
+            height,
+            x,
+            y,
+            transparent: isFrameless,
+            frame: !isFrameless,
+            alwaysOnTop: isFrameless,
+            webPreferences: {
+                preload: __dirname + '/preload.js',
+            },
+        });
+    } else {
+        win = new BrowserWindow({
+            width: 340,
+            height: 820,
+            transparent: isFrameless,
+            frame: !isFrameless,
+            alwaysOnTop: isFrameless,
+            webPreferences: {
+                preload: __dirname + '/preload.js',
+            },
+        });
+    }
+
     var environment = process.env.NODE_ENV
     var isDevelopment = environment === 'development'
 
-    const win = new BrowserWindow({
-        width: 340,
-        height: 740,
-        webPreferences: {
-            nodeIntegration: false,
-            contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js'),
-        }
-    })
-
-    if (isDevelopment)
-        win.webContents.openDevTools()
+    // if (isDevelopment) {
+    //     win.webContents.openDevTools()
+    // } else {
+    //     //assume it's prod
+    //     Menu.setApplicationMenu(null);
+    // }
+    Menu.setApplicationMenu(null);
 
 
-    const template = [
-        {
-            label: 'Background',
-            submenu: [
-                {
-                    label: "Green",
-                    type: 'checkbox',
-                    checked: false,
-                    click: menuItem => {
-                        const color = menuItem.checked ? '#00ff00' : 'darkgray';
-                        console.log(color)
-                        win.webContents.send('change-background-color', color);
-                    },
-                }
-            ]
-        },
-    ];
-
-    const menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
-
-    win.loadFile('index.html')
+    win.loadFile('index.html');
 }
 
 app.whenReady().then(() => {
     createWindow();
+});
 
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
-    })
-})
+ipcMain.on('toggle-frameless', () => {
+    isFrameless = !isFrameless;
+    createWindow();
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()

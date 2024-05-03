@@ -5,7 +5,7 @@
 
 body {
     font-family: 'HatFont', sans-serif;
-    background-color: darkgray;
+    background-color: darkgray
 }
 
 #image-container {
@@ -48,4 +48,27 @@ body {
 
 .grayscale {
     filter: grayscale(100%);
+}
+
+.button-draggable-wrapper {
+    -webkit-app-region: drag;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    font-family: 'HatFont', sans-serif;
+    position: relative;
+    width: 150px;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-app-region: no-drag;
 }

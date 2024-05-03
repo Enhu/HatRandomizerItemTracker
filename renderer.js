@@ -1,8 +1,10 @@
-// renderer.js
-window.electronAPI.on('change-background-color', (event, color) => {
-    document.body.style.backgroundColor = color;
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('toggle-frameless');
 
+    toggleButton.addEventListener('click', () => {
+        window.electronAPI.toggleFrameless();
+    });
+});
 
 const rowContainers = [
     document.getElementById('row-one'),
