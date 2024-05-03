@@ -8,8 +8,8 @@ const rowContainers = [
 ];
 
 const firstRowImages = [
-    { path: './assets/images/timepiece/timepiece.png', text: "x0", textAlignment: "right" },
-    { path: './assets/images/yarn/defaultyarn.png', text: "x0", textAlignment: "right" },
+    { path: './assets/images/timepiece/timepiece.png', text: "x0", textAlignment: "right", counter: true },
+    { path: './assets/images/yarn/defaultyarn.png', text: "x0", textAlignment: "right", counter: true },
     { path: './assets/images/umbrella/umbrella.png' },
     { path: './assets/images/hats/sprinthat.png' },
     { path: './assets/images/hats/brewerhat.png' },
@@ -33,7 +33,7 @@ const secondRowImages = [
 ];
 
 const thirdRowImages = [
-    { path: './assets/images/badges/badgepin.png' },
+    { path: './assets/images/badges/badgepin.png', text: "x0", textAlignment: "right", counter: true },
     { path: './assets/images/badges/hookshotbadge.png' },
     { path: './assets/images/badges/magnetbadge.png' },
     { path: './assets/images/badges/nobonkbadge.png' },
@@ -85,6 +85,17 @@ const imageSets = [
     sixthRowImages,
 ];
 
+function updateTextValue(span, increment) {
+    let currentValue = parseInt(span.innerText.replace("x", ""), 10); // Get the current number
+    if (increment) {
+        currentValue += 1; // Increment the value
+    } else {
+        currentValue -= 1; // Decrement the value
+        if (currentValue < 0) currentValue = 0; // Ensure it doesn't go below zero
+    }
+    span.innerText = `x${currentValue}`; // Update the text with the new value
+}
+
 imageSets.forEach((images, index) => {
     const rowContainer = rowContainers[index];
 
@@ -95,10 +106,33 @@ imageSets.forEach((images, index) => {
         img.src = image.path;
         img.width = 50;
         img.height = 50;
+
+        if (!image.counter) {
+            img.classList.add('grayscale');
+
+            img.addEventListener('click', () => {
+                img.classList.toggle('grayscale'); // Toggle grayscale class
+            });
+        }
+
         container.appendChild(img);
 
         if (image.text) {
             const text = document.createElement('span');
+
+            if (image.counter) {
+                text.className = 'text-bottom-right';
+                img.addEventListener('click', () => {
+                    updateTextValue(text, true); // Increment the text value
+                });
+
+                // Right-click to decrement
+                img.addEventListener('contextmenu', (event) => {
+                    event.preventDefault(); // Prevent default context menu
+                    updateTextValue(text, false); // Decrement the text value
+                });
+            }
+
             text.innerText = image.text;
 
             if (image.textAlignment === 'right') {
