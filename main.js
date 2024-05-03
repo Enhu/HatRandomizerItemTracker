@@ -4,7 +4,7 @@ const createWindow = () => {
     var environment = process.env.NODE_ENV
     var isDevelopment = environment === 'development'
 
-    if (isDevelopment)
+    if (!isDevelopment)
         Menu.setApplicationMenu(null);
 
     const win = new BrowserWindow({
