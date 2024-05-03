@@ -37,14 +37,12 @@ function createWindow() {
     var environment = process.env.NODE_ENV
     var isDevelopment = environment === 'development'
 
-    // if (isDevelopment) {
-    //     win.webContents.openDevTools()
-    // } else {
-    //     //assume it's prod
-    //     Menu.setApplicationMenu(null);
-    // }
-    Menu.setApplicationMenu(null);
-
+    if (isDevelopment) {
+        win.webContents.openDevTools()
+    } else {
+        //assume it's prod
+        Menu.setApplicationMenu(null);
+    }
 
     win.loadFile('index.html');
 }
