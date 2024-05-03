@@ -1,2 +1,2 @@
 # HatRandomizerChecklist
-A simple checklist for the Archipelago Hat Randomizer
+A simple item checklist for the Archipelago Hat Randomizer
