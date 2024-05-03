@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'HatFont';
-    src: url('./assets/font/Curse\ Casual.ttf') format('truetype');
+    src: url('../assets/font/Curse\ Casual.ttf') format('truetype');
 }
 
 body {
