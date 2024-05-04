@@ -23,8 +23,8 @@ function createWindow() {
         });
     } else {
         win = new BrowserWindow({
-            width: 340,
-            height: 820,
+            width: 275,
+            height: 840,
             transparent: isFrameless,
             frame: !isFrameless,
             alwaysOnTop: true,
@@ -43,6 +43,7 @@ function createWindow() {
         //assume it's prod
         Menu.setApplicationMenu(null);
     }
+
 
     win.loadFile('index.html');
 
