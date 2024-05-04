@@ -16,8 +16,8 @@ body {
 
 .row {
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     gap: 10px;
 }
 
@@ -27,23 +27,23 @@ body {
     justify-content: space-between;
 }
 
-.text-bottom-right {
+.text-top-right {
     position: absolute;
     right: -5px;
+    font-size: 14px;
 }
 
 .img-text-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 11px;
 }
 
 .row img {
     cursor: pointer;
-}
-
-.row span {
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
 }
 
 .grayscale {
@@ -52,7 +52,11 @@ body {
 
 .button-draggable-wrapper {
     -webkit-app-region: drag;
+    background-color: black;
     position: relative;
+    width: 240px;
+    height: 63px;
+    gap: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +65,7 @@ body {
 .button {
     font-family: 'HatFont', sans-serif;
     position: relative;
-    width: 150px;
+    width: 100px;
     background-color: black;
     border: none;
     color: white;
@@ -69,6 +73,6 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     -webkit-app-region: no-drag;
 }

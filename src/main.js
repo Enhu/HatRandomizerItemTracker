@@ -16,7 +16,7 @@ function createWindow() {
             y,
             transparent: isFrameless,
             frame: !isFrameless,
-            alwaysOnTop: isFrameless,
+            alwaysOnTop: true,
             webPreferences: {
                 preload: __dirname + '/preload.js',
             },
@@ -27,7 +27,7 @@ function createWindow() {
             height: 820,
             transparent: isFrameless,
             frame: !isFrameless,
-            alwaysOnTop: isFrameless,
+            alwaysOnTop: true,
             webPreferences: {
                 preload: __dirname + '/preload.js',
             },
