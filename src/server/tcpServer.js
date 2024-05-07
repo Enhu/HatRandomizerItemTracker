@@ -17,7 +17,7 @@ function createTcpServer(port, onConnection) {
         });
     });
 
-    server.listen(port, () => {
+    server.listen(port, '127.0.0.1', () => {
         console.log(`TCP server is listening on port ${port}`);
     });
 

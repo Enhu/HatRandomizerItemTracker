@@ -16,8 +16,8 @@ function processData(data) {
         case 'deathwishes':
             state[key] = parseInt(value, 10);
             break;
-        case 'badgePins':
-            state[key] = parseInt(value, 10);
+        case 'badgePin':
+            state.badgePins += 1;
             break;
         case 'umbrella':
             state[key] = !state[key];

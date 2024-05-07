@@ -105,7 +105,7 @@ const rowEightImages = [
     { id: "burgerCushion", path: './assets/images/relics/burgercushion.png' },
     { id: "trainTracks", path: './assets/images/relics/mountainset.png' },
     { id: "train", path: './assets/images/relics/train.png' },
-    { id: "badgePins", path: './assets/images/badges/badgepin.png', text: "0", textAlignment: "right", counter: true },
+    { id: "badgePin", path: './assets/images/badges/badgepin.png', text: "0", textAlignment: "right", counter: true },
 ];
 
 const rowNineImages = [
