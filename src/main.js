@@ -48,7 +48,6 @@ function createWindow() {
         Menu.setApplicationMenu(null);
     }
 
-
     win.loadFile('index.html');
 
     win.webContents.once('did-finish-load', () => {
@@ -63,11 +62,7 @@ function createWindow() {
 function startTcpServer() {
     createTcpServer(PORT, (socket) => {
         socket.on('data', (data) => {
-            if (data === "newGame") {
-
-            } else {
-                win.webContents.send("auto-tracker-data", processData(data.toString()));
-            }
+            win.webContents.send("auto-tracker-data", processData(data.toString()));
         });
     });
 }
