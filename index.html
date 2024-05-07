@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hat Randomizer Item Tracker</title>
+    <title>HatTracker</title>
 </head>
 
 <body>
@@ -21,9 +21,11 @@
         <div id="row-nine" class="row"></div>
         <div id="row-ten" class="row"></div>
         <div id="row-eleven" class="row"></div>
-        <div id="row-twelve" class="row"></div>
+        <div class="row">
+            <button id="reset-button" class="button">Reset</button>
+        </div>
         <div class="button-draggable-wrapper ">
-            <button class="button" id="toggle-frameless">Toggle Transparency</button>
+            <button class="toggle-button" id="toggle-frameless">Toggle Transparency</button>
         </div>
 </body>
 <script src="./src/renderer.js"></script>

@@ -1,5 +1,5 @@
 {
-  "name": "hatrandomizerchecklist",
+  "name": "hattracker",
   "version": "1.0.0",
   "description": "Hat Randomizer Item Tracker",
   "main": "./src/main.js",
@@ -19,7 +19,7 @@
     "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.enhu.hatrandomizerchecklist",
+    "appId": "com.enhu.hattracker",
     "win": {
       "target": "portable",
       "icon": "./build/icon.png"

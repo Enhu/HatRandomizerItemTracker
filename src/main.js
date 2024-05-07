@@ -1,8 +1,12 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron')
-const path = require('path');
+const createTcpServer = require('./server/tcpServer');
+const { processData } = require('./autoTracker/autoTracker');
+const trackingData = require('./autoTracker/trackingData');
 
 let win;
 let isFrameless = false;
+
+const PORT = 34053;
 
 function createWindow() {
     if (win) {
@@ -51,17 +55,44 @@ function createWindow() {
         const bgColor = isFrameless ? 'rgba(0, 0, 0, 0)' : 'gray';
         const textColor = isFrameless ? 'white' : 'black';
         win.webContents.send('set-background-color', bgColor, textColor);
+        win.webContents.send('auto-tracker-data', trackingData.state);
     });
 
 }
 
+function startTcpServer() {
+    createTcpServer(PORT, (socket) => {
+        socket.on('data', (data) => {
+            if (data === "newGame") {
+
+            } else {
+                win.webContents.send("auto-tracker-data", processData(data.toString()));
+            }
+        });
+    });
+}
+
 app.whenReady().then(() => {
     createWindow();
+    startTcpServer();
+    win.webContents.send('auto-tracker-data', trackingData.state);
 });
 
+//toggle between transparent/grey background
 ipcMain.on('toggle-frameless', () => {
     isFrameless = !isFrameless;
     createWindow();
+});
+
+//reset everything back to 0
+ipcMain.on('reset-state', () => {
+    trackingData.resetState();
+    win.webContents.send('auto-tracker-data', trackingData.state);
+});
+
+//this is to handle clicks in the app instead of auto tracking the data
+ipcMain.on('update-tracker-state', (event, data) => {
+    win.webContents.send("auto-tracker-data", processData(data.toString()));
 });
 
 app.on('window-all-closed', () => {
