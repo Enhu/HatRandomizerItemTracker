@@ -62,7 +62,13 @@ function createWindow() {
 function startTcpServer() {
     createTcpServer(PORT, (socket) => {
         socket.on('data', (data) => {
-            win.webContents.send("auto-tracker-data", processData(data.toString()));
+            console.log(data.toString());
+            if (data.toString() === "newGame") {
+                trackingData.resetState();
+                win.webContents.send('auto-tracker-data', trackingData.state);
+            } else {
+                win.webContents.send("auto-tracker-data", processData(data.toString()));
+            }
         });
     });
 }
