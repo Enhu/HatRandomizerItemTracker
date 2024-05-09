@@ -1,50 +1,45 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const path = require('path');
 const createTcpServer = require('./server/tcpServer');
 const { processData } = require('./autoTracker/autoTracker');
 const trackingData = require('./autoTracker/trackingData');
 
-let win;
+const PORT = 34053;
+const WINDOW_DEFAULTS = {
+    width: 275,
+    height: 840,
+    alwaysOnTop: true,
+    webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+    },
+};
+
+let win = null;
 let isFrameless = false;
 
-const PORT = 34053;
-
 function createWindow() {
+    const windowOptions = {
+        ...WINDOW_DEFAULTS,
+        transparent: isFrameless,
+        frame: !isFrameless,
+    };
+
     if (win) {
         const { width, height, x, y } = win.getBounds();
+        windowOptions.width = width;
+        windowOptions.height = height;
+        windowOptions.x = x;
+        windowOptions.y = y;
         win.close();
-
-        win = new BrowserWindow({
-            width,
-            height,
-            x,
-            y,
-            transparent: isFrameless,
-            frame: !isFrameless,
-            alwaysOnTop: true,
-            webPreferences: {
-                preload: __dirname + '/preload.js',
-            },
-        });
-    } else {
-        win = new BrowserWindow({
-            width: 275,
-            height: 840,
-            transparent: isFrameless,
-            frame: !isFrameless,
-            alwaysOnTop: true,
-            webPreferences: {
-                preload: __dirname + '/preload.js',
-            },
-        });
     }
 
-    var environment = process.env.NODE_ENV
-    var isDevelopment = environment === 'development'
+    win = new BrowserWindow(windowOptions);
+
+    const isDevelopment = process.env.NODE_ENV === 'development';
 
     if (isDevelopment) {
-        win.webContents.openDevTools()
+        win.webContents.openDevTools();
     } else {
-        //assume it's prod
         Menu.setApplicationMenu(null);
     }
 
@@ -56,19 +51,24 @@ function createWindow() {
         win.webContents.send('set-background-color', bgColor, textColor);
         win.webContents.send('auto-tracker-data', trackingData.state);
     });
-
 }
 
 function startTcpServer() {
     createTcpServer(PORT, (socket) => {
         socket.on('data', (data) => {
-            console.log(data.toString());
-            if (data.toString() === "newGame") {
+            const message = data.toString();
+
+            if (message === 'newGame') {
                 trackingData.resetState();
                 win.webContents.send('auto-tracker-data', trackingData.state);
             } else {
-                win.webContents.send("auto-tracker-data", processData(data.toString()));
+                const processedData = processData(message);
+                win.webContents.send('auto-tracker-data', processedData);
             }
+        });
+
+        socket.on('error', (err) => {
+            console.error('TCP server error:', err);
         });
     });
 }
@@ -76,26 +76,31 @@ function startTcpServer() {
 app.whenReady().then(() => {
     createWindow();
     startTcpServer();
-    win.webContents.send('auto-tracker-data', trackingData.state);
 });
 
-//toggle between transparent/grey background
 ipcMain.on('toggle-frameless', () => {
     isFrameless = !isFrameless;
     createWindow();
 });
 
-//reset everything back to 0
 ipcMain.on('reset-state', () => {
     trackingData.resetState();
     win.webContents.send('auto-tracker-data', trackingData.state);
 });
 
-//this is to handle clicks in the app instead of auto tracking the data
 ipcMain.on('update-tracker-state', (event, data) => {
-    win.webContents.send("auto-tracker-data", processData(data.toString()));
+    const processedData = processData(data.toString());
+    win.webContents.send('auto-tracker-data', processedData);
 });
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-})
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
+});
