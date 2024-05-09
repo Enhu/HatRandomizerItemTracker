@@ -22,6 +22,7 @@ function processData(data) {
                 case 'timepieces':
                 case 'yarns':
                 case 'deathwishes':
+                case 'badgePins': //for when you click the image
                     state[key] = value;
                     break;
                 default:
@@ -35,7 +36,7 @@ function processData(data) {
                 case 'umbrella':
                     state[standaloneKey] = !state[standaloneKey];
                     break;
-                case 'badgePin':
+                case 'badgePin': //for getting the value from the auto tracker
                     state.badgePins += 1;
                     break;
                 case 'hookshotBadge':
